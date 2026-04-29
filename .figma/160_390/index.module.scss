@@ -1,0 +1,520 @@
+* {
+  box-sizing: border-box;
+}
+
+.sectionComparisonTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  padding-bottom: 100px;
+  width: 1920px;
+  height: 1182px;
+  row-gap: 50px;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: flex-start;
+    align-self: stretch;
+    margin-right: 576px;
+    margin-left: 576px;
+    row-gap: 16px;
+
+    .heading2 {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      align-self: stretch;
+      padding: 0px 205px 1px 206px;
+      height: 40px;
+
+      .text {
+        line-height: 40px;
+        letter-spacing: 0.41px;
+        color: #1d2939;
+        font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+        font-size: 32px;
+        font-weight: 700;
+      }
+    }
+
+    .paragraph {
+      display: flex;
+      flex-shrink: 0;
+      align-items: flex-start;
+      align-self: stretch;
+      padding: 0px 172px 1px;
+      height: 24px;
+
+      .text2 {
+        margin: -1px 0px 0px;
+        line-height: 24px;
+        letter-spacing: -0.31px;
+        color: #475467;
+        font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .frame {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-shrink: 0;
+    align-items: flex-start;
+    align-self: stretch;
+    margin-right: 491px;
+    margin-left: 491px;
+    outline-width: 1px;
+    outline-style: solid;
+    outline-color: #e6ecf2;
+    border-radius: 12px;
+
+    .tableRow {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      width: 938px;
+
+      .text3 {
+        line-height: 16px;
+        letter-spacing: -0.08px;
+        color: #1a1a1a;
+        font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .headerCell {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-radius: 8px 0px 0px;
+        border-color: #f0f0f0;
+        background: #fafbfc;
+        padding: 14px 352px 13px 16px;
+      }
+
+      .headerCell2 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        background: #fafbfc;
+        padding: 14px 138px 13px 82px;
+      }
+
+      .headerCell3 {
+        flex-shrink: 0;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-radius: 0px 8px 0px 0px;
+        border-color: #f0f0f0;
+        background: #fafbfc;
+        width: 259px;
+        height: 43px;
+      }
+    }
+
+    .tableBody {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      flex-shrink: 0;
+      align-items: flex-start;
+      align-self: stretch;
+
+      .text4 {
+        line-height: 17px;
+        letter-spacing: -0.15px;
+        color: #1a1a1a;
+        font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .text5 {
+        line-height: 16px;
+        letter-spacing: -0.08px;
+        color: #333333;
+        font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+        font-size: 13px;
+      }
+
+      .tableCell5 {
+        display: flex;
+        align-items: center;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        padding: 13px 149px 12px 93px;
+
+        .a3 {
+          line-height: 19px;
+          letter-spacing: -0.31px;
+          color: #cccccc;
+          font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+          font-size: 16px;
+        }
+      }
+
+      .tableCell3 {
+        display: flex;
+        align-items: center;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        padding: 13px 149px 12px 94px;
+
+        .a2 {
+          line-height: 19px;
+          letter-spacing: -0.31px;
+          color: #159895;
+          font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+
+      .text6 {
+        display: flex;
+        align-items: center;
+        border: 1px solid #e8e8e8;
+        border-radius: 8px;
+        padding: 1px 4px;
+
+        .a {
+          line-height: 13px;
+          letter-spacing: 0.06px;
+          color: #999999;
+          font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+          font-size: 11px;
+        }
+      }
+
+      .tableCell8 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        padding: 14px 302px 12px 16px;
+        width: 422px;
+        min-width: 422px;
+        height: 44px;
+      }
+
+      .tableCell2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        padding: 14px 328px 12px 16px;
+        width: 422px;
+        min-width: 422px;
+        height: 44px;
+      }
+
+      .tableCell {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        background: #f8f9fa;
+        padding: 12px 866px 11px 16px;
+      }
+
+      .tableRow2 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+      }
+
+      .tableRow3 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+
+        .tableCell4 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-width: 0px 0px 1px;
+          border-style: solid;
+          border-color: #f0f0f0;
+          padding: 14px 315px 12px 16px;
+          width: 422px;
+          min-width: 422px;
+          height: 44px;
+        }
+      }
+
+      .tableRow4 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+
+        .tableCell6 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-width: 0px 0px 1px;
+          border-style: solid;
+          border-color: #f0f0f0;
+          padding: 14px 327px 12px 16px;
+          width: 422px;
+          min-width: 422px;
+          height: 44px;
+        }
+      }
+
+      .tableCell7 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        background: #f8f9fa;
+        padding: 12px 894px 11px 16px;
+      }
+
+      .tableRow5 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+      }
+
+      .tableRow6 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+      }
+
+      .tableRow7 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+
+        .tableCell9 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-width: 0px 0px 1px;
+          border-style: solid;
+          border-color: #f0f0f0;
+          padding: 14px 276px 12px 16px;
+          width: 422px;
+          min-width: 422px;
+          height: 44px;
+        }
+      }
+
+      .tableRow8 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+      }
+
+      .tableCell10 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        border-width: 0px 0px 1px;
+        border-style: solid;
+        border-color: #f0f0f0;
+        background: #f8f9fa;
+        padding: 12px 852px 11px 16px;
+      }
+
+      .tableRow9 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+
+        .tableCell11 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-width: 0px 0px 1px;
+          border-style: solid;
+          border-color: #f0f0f0;
+          padding: 14px 289px 12px 16px;
+          width: 422px;
+          min-width: 422px;
+          height: 44px;
+        }
+      }
+
+      .tableRow10 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+
+        .tableCell12 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-width: 0px 0px 1px;
+          border-style: solid;
+          border-color: #f0f0f0;
+          padding: 14px 157px 12px 16px;
+          width: 422px;
+          min-width: 422px;
+          height: 44px;
+        }
+      }
+
+      .tableRow11 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+
+        .tableCell13 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-width: 0px 0px 1px;
+          border-style: solid;
+          border-color: #f0f0f0;
+          padding: 14px 230px 12px 16px;
+          width: 422px;
+          min-width: 422px;
+          height: 44px;
+        }
+      }
+
+      .tableRow12 {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        align-self: stretch;
+        justify-content: space-between;
+        padding-right: 258px;
+        height: 44px;
+
+        .tableCell14 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 14px 289px 13px 16px;
+          width: 422px;
+          min-width: 422px;
+          height: 44px;
+        }
+
+        .a4 {
+          padding: 13px 0px 13px 94px;
+          width: 258px;
+          height: 44px;
+          line-height: 19px;
+          letter-spacing: -0.31px;
+          color: #159895;
+          font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+
+      .frame2131332292 {
+        display: flex;
+        position: absolute;
+        top: -23px;
+        left: 107px;
+        flex-direction: column;
+        flex-shrink: 0;
+        align-items: flex-start;
+        padding: 14px 12px 21px 23px;
+        width: 325px;
+        height: 168px;
+
+        .text7 {
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #ffffff;
+          font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+          font-size: 14px;
+        }
+
+        .text8 {
+          margin: 10px 0px 0px;
+          width: 290px;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #ffffff;
+          font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .tableCell15 {
+      position: absolute;
+      top: 0;
+      left: 680px;
+      flex-shrink: 0;
+      border-width: 0px 0px 0px 1px;
+      border-style: solid;
+      border-radius: 0px 12px 12px 0px;
+      border-color: #fdbabb;
+      background: #ffebeb;
+      width: 258px;
+      height: 952px;
+    }
+  }
+}

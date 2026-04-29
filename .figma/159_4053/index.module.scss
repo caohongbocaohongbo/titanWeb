@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+.frame2131332317 {
+  display: inline-flex;
+  align-items: center;
+  width: 142px;
+  height: 24px;
+
+  .text {
+    flex-shrink: 0;
+    line-height: 24px;
+    letter-spacing: -0.31px;
+    color: #e02e2e;
+    font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+
+  .frame {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+  }
+}

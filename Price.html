@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰坦云 - 价格页</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --page-bg: #f9fafb;
+            --surface: #ffffff;
+            --surface-muted: #fafbfc;
+            --surface-soft: #f5f7fa;
+            --text-primary: #1d2939;
+            --text-strong: #333333;
+            --text-body: #475467;
+            --text-secondary: #4b5563;
+            --text-light: #6b7280;
+            --text-faint: #949999;
+            --border: #eaecf0;
+            --border-soft: #f0f0f0;
+            --border-strong: #dadfe2;
+            --accent: #de2a2a;
+            --accent-bg: #ffebeb;
+            --accent-outline: #fdbabb;
+            --success: #159895;
+            --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-soft: 0 6px 60px rgba(0, 0, 0, 0.06);
+            --shadow-pro: 0 0 40px rgba(216, 217, 218, 0.8);
+            --shadow-button: 0 10px 15px -3px #fecaca, 0 4px 6px -4px #fecaca;
+            --radius-card: 16px;
+            --font-sans: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", SimHei, Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--page-bg);
+            color: var(--text-body);
+            font-family: var(--font-sans);
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button,
+        a {
+            font: inherit;
+        }
+
+        .page {
+            min-width: 320px;
+        }
+
+        .hero-wrap {
+            background: var(--page-bg) url("./.figma/image/hero-bg.jpg") center top / cover no-repeat;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 48px;
+            margin: 0 auto;
+            padding: 2px 64px 34px;
+            max-width: 1280px;
+        }
+
+        .hero-copy {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+            min-width: 0;
+        }
+
+        .hero-title {
+            margin: 0;
+            width: 488px;
+            max-width: 100%;
+            color: var(--text-strong);
+            font-family: "Alibaba PuHuiTi 3.0", var(--font-sans);
+            font-size: 55px;
+            line-height: 60px;
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            margin: 0;
+            width: 448px;
+            max-width: 100%;
+            color: var(--text-secondary);
+            font-family: "Arial Unicode MS", var(--font-sans);
+            font-size: 22px;
+            line-height: 33px;
+        }
+
+        .hero-visual {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 64px 1px 64px 116px;
+        }
+
+        .hero-visual img {
+            width: 675px;
+            height: 590px;
+            object-fit: contain;
+        }
+
+        .pricing-area {
+            background: var(--surface);
+            padding: 0 24px 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 30px;
+            align-items: stretch;
+            margin: 0 auto;
+            padding-top: 112px;
+            padding-bottom: 40px;
+            max-width: 1160px;
+        }
+
+        .plan-card {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            border-radius: var(--radius-card);
+            background: var(--surface);
+            overflow: hidden;
+        }
+
+        .free-card {
+            border: 1px solid var(--border-strong);
+            box-shadow: var(--shadow-soft);
+            padding: 32px 32px 99px;
+            min-height: 495px;
+        }
+
+        .pro-card {
+            border: 1px solid var(--accent-outline);
+            box-shadow: var(--shadow-pro);
+        }
+
+        .plan-heading {
+            margin: 0 0 8px;
+            color: var(--text-strong);
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 700;
+        }
+
+        .plan-price-line {
+            margin: 0;
+            padding-bottom: 32px;
+            color: var(--text-strong);
+            line-height: 48px;
+        }
+
+        .free-price {
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        .free-price-suffix,
+        .free-price-days {
+            font-size: 14px;
+        }
+
+        .free-price-days {
+            font-weight: 700;
+        }
+
+        .plan-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .plan-list-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .plan-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            background: var(--surface);
+            color: #ef4646;
+            font-size: 11px;
+            line-height: 13px;
+            font-weight: 700;
+            flex: 0 0 18px;
+        }
+
+        .free-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: auto;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            min-height: 48px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 700;
+        }
+
+        .pro-top {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 32px;
+            background-image: linear-gradient(180deg, #fee0e0 0%, #ffffff 100%);
+        }
+
+        .pro-title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pro-title-row img {
+            width: 26px;
+            height: 16px;
+        }
+
+        .pro-price-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1px;
+        }
+
+        .pro-price {
+            margin: 0;
+            color: var(--text-strong);
+            font-size: 48px;
+            line-height: 48px;
+            font-weight: 700;
+        }
+
+        .pro-price-unit {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        .recommend-badge {
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 0 0 12px;
+            background: var(--accent);
+            width: 106px;
+            height: 24px;
+            color: #ffffff;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 700;
+        }
+
+        .pro-body {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 0 32px 32px;
+        }
+
+        .pro-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-bottom: 24px;
+        }
+
+        .pro-action {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 6px;
+            background-image: linear-gradient(90deg, #f34d4d 0%, #dc2626 100%);
+            box-shadow: var(--shadow-button);
+            min-height: 48px;
+            color: #ffffff;
+            font-family: "WenQuanYi Zen Hei", var(--font-sans);
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .payment-tags {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            opacity: 0.6;
+            color: var(--text-strong);
+            font-size: 10px;
+            line-height: 15px;
+            font-weight: 500;
+        }
+
+        .compare-trigger-wrap {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .compare-trigger {
+            display: inline-flex;
+            align-items: center;
+            gap: 0;
+            border: 0;
+            background: transparent;
+            padding: 0;
+            color: #e02e2e;
+            cursor: pointer;
+        }
+
+        .compare-trigger span {
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.31px;
+        }
+
+        .compare-trigger img {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.24s ease;
+            transform-origin: center;
+        }
+
+        .compare-trigger[aria-expanded="true"] img {
+            transform: rotate(90deg);
+        }
+
+        .compare-section {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            pointer-events: none;
+            transform: translateY(-12px);
+            transition: max-height 0.45s ease, opacity 0.3s ease, transform 0.3s ease, margin-top 0.3s ease;
+            margin-top: 0;
+        }
+
+        .compare-section.is-open {
+            max-height: 2200px;
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+            margin-top: 40px;
+        }
+
+        .compare-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            margin: 0 auto;
+            padding: 0 24px 100px;
+            background: var(--surface);
+        }
+
+        .compare-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .compare-heading h2 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 32px;
+            line-height: 40px;
+            letter-spacing: 0.41px;
+            font-weight: 700;
+        }
+
+        .compare-heading p {
+            margin: 0;
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.31px;
+            text-align: center;
+        }
+
+        .compare-table {
+            position: relative;
+            width: 938px;
+            max-width: 100%;
+            border: 1px solid #e6ecf2;
+            border-radius: 12px;
+            background: var(--surface);
+            overflow: hidden;
+        }
+
+        .compare-table::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 258px;
+            height: 100%;
+            border-left: 1px solid var(--accent-outline);
+            background: var(--accent-bg);
+            pointer-events: none;
+        }
+
+        .compare-row {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 422px 258px 258px;
+            min-height: 44px;
+        }
+
+        .compare-row.header {
+            min-height: 43px;
+        }
+
+        .compare-cell {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border-soft);
+            padding: 13px 16px 12px;
+            color: #333333;
+            font-size: 13px;
+            line-height: 16px;
+            letter-spacing: -0.08px;
+        }
+
+        .compare-row.header .compare-cell {
+            background: var(--surface-muted);
+            color: #1a1a1a;
+            font-size: 13px;
+            line-height: 16px;
+            font-weight: 600;
+        }
+
+        .compare-row.header .compare-cell:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        .compare-row.header .compare-cell:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        .compare-row.section-row .compare-cell {
+            background: #f8f9fa;
+            color: #1a1a1a;
+            font-size: 14px;
+            line-height: 17px;
+            letter-spacing: -0.15px;
+            font-weight: 600;
+            min-height: 40px;
+            padding-top: 12px;
+            padding-bottom: 11px;
+        }
+
+        .compare-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .compare-label-text {
+            white-space: nowrap;
+        }
+
+        .compare-info {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e8e8e8;
+            border-radius: 8px;
+            background: #ffffff;
+            width: 18px;
+            height: 18px;
+            color: #999999;
+            font-size: 11px;
+            line-height: 13px;
+            cursor: help;
+            position: relative;
+            flex: 0 0 18px;
+        }
+
+        .compare-info::after {
+            content: attr(data-tip);
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + 10px);
+            transform: translateX(-50%);
+            width: 240px;
+            border-radius: 12px;
+            background: rgba(29, 41, 57, 0.96);
+            padding: 14px 16px;
+            color: #ffffff;
+            font-size: 12px;
+            line-height: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            white-space: normal;
+            box-shadow: 0 10px 30px rgba(29, 41, 57, 0.2);
+        }
+
+        .compare-info:hover::after,
+        .compare-info:focus-visible::after {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        .compare-value {
+            justify-content: center;
+            color: #cccccc;
+            font-size: 16px;
+            line-height: 19px;
+            letter-spacing: -0.31px;
+        }
+
+        .compare-value.is-check {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .compare-value.is-dash {
+            color: #cccccc;
+        }
+
+        .compare-row:last-child .compare-cell {
+            border-bottom: 0;
+        }
+
+        .features {
+            background: #fafbfc;
+            padding: 112px 64px 160px;
+        }
+
+        .features-inner {
+            max-width: 1168px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 32px;
+            line-height: 40px;
+            letter-spacing: 0.41px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .section-heading p {
+            margin: 0;
+            max-width: 768px;
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.31px;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            background: var(--surface);
+            padding: 32px;
+        }
+
+        .feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            background: #fee2e2;
+            width: 40px;
+            height: 40px;
+        }
+
+        .feature-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .feature-card h3 {
+            margin: 20px 0 0;
+            color: var(--text-primary);
+            font-size: 20px;
+            line-height: 28px;
+            letter-spacing: -0.45px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            margin: 12px 0 0;
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.31px;
+        }
+
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .feature-tag {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 4px;
+            background: var(--surface-soft);
+            padding: 5px 8px 4px;
+            color: var(--text-faint);
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+        .cta-figure {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            background: #04030b;
+        }
+
+        .cta-figure img {
+            width: min(100%, 1920px);
+            height: auto;
+        }
+
+        .cta-figure-content {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1196px;
+            height: 100%;
+            padding: 0 64px;
+        }
+
+        .cta-figure-left {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cta-figure-title {
+            margin: 0 0 20px;
+            color: #ffffff;
+            font-size: 32px;
+            line-height: 40px;
+            font-weight: 700;
+            letter-spacing: 0.41px;
+        }
+
+        .cta-figure-desc {
+            margin: 0;
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 28px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-figure-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-figure-contact {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .cta-figure-phone {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .cta-figure-or {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .cta-figure-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 46px;
+            background: #d7182a;
+            color: #ffffff;
+            font-size: 16px;
+            line-height: 24px;
+            text-decoration: none;
+            border-radius: 2px;
+        }
+
+        .support {
+            padding: 112px 64px;
+            background: var(--page-bg);
+        }
+
+        .support-inner {
+            max-width: 1168px;
+            margin: 0 auto;
+        }
+
+        .support-title {
+            margin: 0 0 48px;
+            color: var(--text-primary);
+            font-size: 32px;
+            line-height: 40px;
+            letter-spacing: 0.41px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .support-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            box-shadow: var(--shadow-card);
+            background: var(--surface);
+            padding: 31px 32px 32px 31px;
+        }
+
+        .support-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 9999px;
+            background: #fee2e2;
+        }
+
+        .support-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .support-icon.is-training img {
+            width: 20px;
+            height: 18px;
+        }
+
+        .support-card h3 {
+            margin: 21px 0 0;
+            color: var(--text-primary);
+            font-size: 20px;
+            line-height: 28px;
+            letter-spacing: -0.45px;
+            font-weight: 700;
+        }
+
+        .support-card p {
+            margin: 12px 0 0;
+            color: var(--text-body);
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: -0.31px;
+        }
+
+        @media (max-width: 1399px) {
+            .hero,
+            .features,
+            .support {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+
+            .pricing-area {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+        }
+
+        @media (max-width: 1199px) {
+            .hero {
+                gap: 32px;
+            }
+
+            .hero-title {
+                font-size: 44px;
+                line-height: 50px;
+            }
+
+            .hero-desc {
+                font-size: 18px;
+                line-height: 30px;
+            }
+
+            .hero-visual {
+                padding-left: 40px;
+            }
+
+            .pricing-grid,
+            .feature-grid,
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .free-card {
+                min-height: auto;
+            }
+
+            .compare-table {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .compare-table::after {
+                display: none;
+            }
+
+            .compare-row {
+                width: 938px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 48px;
+                padding-bottom: 48px;
+            }
+
+            .hero-visual {
+                justify-content: center;
+                width: 100%;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero,
+            .pricing-area,
+            .features,
+            .support {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero-title {
+                font-size: 34px;
+                line-height: 42px;
+            }
+
+            .hero-desc {
+                font-size: 16px;
+                line-height: 28px;
+            }
+
+            .pricing-grid {
+                padding-top: 72px;
+            }
+
+            .free-card,
+            .pro-top,
+            .pro-body,
+            .feature-card,
+            .support-card {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .section-heading h2,
+            .compare-heading h2,
+            .support-title {
+                font-size: 26px;
+                line-height: 34px;
+            }
+
+            .compare-inner {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <section class="hero-wrap">
+            <div class="hero">
+                <div class="hero-copy">
+                    <h1 class="hero-title">现在开始，用更专业的能力做更高效的酒店经营</h1>
+                    <p class="hero-desc">免费版满足基础渠道与预订管理；专业版仅需 ¥1999 / 年，解锁更多优质渠道、数据洞察、官网预订与智能调价能力，帮助酒店更高效获客、经营与增长。</p>
+                </div>
+                <div class="hero-visual">
+                    <img src="./.figma/image/mojt8dpu-ejm9b0q.png" alt="专业版 PRO 视觉图">
+                </div>
+            </div>
+        </section>
+        <section class="pricing-area">
+            <div class="pricing-grid">
+                <article class="plan-card free-card">
+                    <div>
+                        <h2 class="plan-heading">免费版</h2>
+                        <p class="plan-price-line"><span class="free-price">¥0&nbsp;</span><span class="free-price-suffix">使用</span><span class="free-price-days">30</span><span class="free-price-suffix">天</span></p>
+                        <div class="plan-list">
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>适合普通运营起步</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>选择3个渠道</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>基础财务报表</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>2级权限规则用</span></div>
+                        </div>
+                    </div>
+                    <a class="free-action" href="https://www.titan-hospitality.cn/applyTrial">申请试用</a>
+                </article>
+                <article class="plan-card pro-card">
+                    <div class="pro-top">
+                        <div class="pro-title-row">
+                            <h2 class="plan-heading">专业版</h2>
+                            <img src="./.figma/image/mojt8dpu-nxx2bru.svg" alt="PRO 标识">
+                        </div>
+                        <div class="pro-price-row">
+                            <p class="pro-price">¥1999</p>
+                            <p class="pro-price-unit">&nbsp;/ 年</p>
+                        </div>
+                        <div class="recommend-badge">Recommend</div>
+                    </div>
+                    <div class="pro-body">
+                        <div class="pro-list">
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>&nbsp;无限渠道接入</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>&nbsp;数据分析视图</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>&nbsp;预订官网能力</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>&nbsp;调价建议</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>&nbsp;优先客服支持</span></div>
+                            <div class="plan-list-item"><span class="plan-check">✓</span><span>&nbsp;专业版权限分享</span></div>
+                        </div>
+                        <a class="pro-action" href="https://www.titan-hospitality.cn/applyTrial">立即升级</a>
+                        <div class="payment-tags">
+                            <span>支付宝</span>
+                            <span>微信</span>
+                            <span>对公转账</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="compare-trigger-wrap">
+                <button class="compare-trigger" id="compareTrigger" type="button" aria-expanded="false" aria-controls="compareSection">
+                    <span>查看完整功能对比</span>
+                    <img src="./.figma/image/mojtdh9p-egc3hjd.svg" alt="展开箭头">
+                </button>
+            </div>
+            <section class="compare-section" id="compareSection">
+                <div class="compare-inner">
+                    <div class="compare-heading">
+                        <h2>免费版与专业版功能对比</h2>
+                        <p>从基础运营到增长经营，按你的业务阶段选择更适合的版本。</p>
+                    </div>
+                    <div class="compare-table">
+                        <div class="compare-row header">
+                            <div class="compare-cell">功能特性</div>
+                            <div class="compare-cell compare-value">免费版</div>
+                            <div class="compare-cell compare-value">专业版</div>
+                        </div>
+                        <div class="compare-row section-row">
+                            <div class="compare-cell">渠道管理</div>
+                            <div class="compare-cell"></div>
+                            <div class="compare-cell"></div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">协议渠道</span><span class="compare-info" tabindex="0" data-tip="支持基础协议渠道管理与运营配置。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">高价值渠道</span><span class="compare-info" tabindex="0" data-tip="专业版支持覆盖更多高价值渠道，拓展优质订单来源。">?</span></div></div>
+                            <div class="compare-cell compare-value is-dash">—</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">GDS渠道</span><span class="compare-info" tabindex="0" data-tip="可接入 GDS 渠道，统一管理库存与订单。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">预订管理</span><span class="compare-info" tabindex="0" data-tip="支持订单查看、跟进与基础预订管理流程。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row section-row">
+                            <div class="compare-cell">洞察</div>
+                            <div class="compare-cell"></div>
+                            <div class="compare-cell"></div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">预订表现</span><span class="compare-info" tabindex="0" data-tip="查看基础预订表现与经营结果。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">客户画像分析</span><span class="compare-info" tabindex="0" data-tip="分析客户特征与来源结构，辅助经营决策。">?</span></div></div>
+                            <div class="compare-cell compare-value is-dash">—</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">客户预订分布</span><span class="compare-info" tabindex="0" data-tip="查看不同客源渠道与预订分布情况。">?</span></div></div>
+                            <div class="compare-cell compare-value is-dash">—</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">调价建议</span><span class="compare-info" tabindex="0" data-tip="提供价格策略建议，帮助优化收益管理效率。">?</span></div></div>
+                            <div class="compare-cell compare-value is-dash">—</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row section-row">
+                            <div class="compare-cell">直客预订</div>
+                            <div class="compare-cell"></div>
+                            <div class="compare-cell"></div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">预订官网</span><span class="compare-info" tabindex="0" data-tip="支持酒店自有预订官网能力，提升直客转化。">?</span></div></div>
+                            <div class="compare-cell compare-value is-dash">—</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">酒店网站建设工具</span><span class="compare-info" tabindex="0" data-tip="专业版支持酒店网站搭建与基础运营工具。">?</span></div></div>
+                            <div class="compare-cell compare-value is-dash">—</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row section-row">
+                            <div class="compare-cell">生态系统</div>
+                            <div class="compare-cell"></div>
+                            <div class="compare-cell"></div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">PMS集成</span><span class="compare-info" tabindex="0" data-tip="对接 PMS 系统，打通酒店业务数据。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">酒店应用商店</span><span class="compare-info" tabindex="0" data-tip="可接入更多酒店经营应用和扩展能力。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row section-row">
+                            <div class="compare-cell">支持与安全</div>
+                            <div class="compare-cell"></div>
+                            <div class="compare-cell"></div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">A-Pay 支付处理</span><span class="compare-info" tabindex="0" data-tip="支持 A-Pay 支付处理与交易基础能力。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">24小时在线客服、电话和电子邮件支持</span><span class="compare-info" tabindex="0" data-tip="支持 24 小时在线客服，以及电话和邮件支持。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">符合PCI DSS和GDPR标准</span><span class="compare-info" tabindex="0" data-tip="满足 PCI DSS 支付安全与 GDPR 数据合规要求。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                        <div class="compare-row">
+                            <div class="compare-cell"><div class="compare-label"><span class="compare-label-text">全天候系统监控</span><span class="compare-info" tabindex="0" data-tip="提供全天候系统监控与故障响应保障。">?</span></div></div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                            <div class="compare-cell compare-value is-check">✓</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="features">
+            <div class="features-inner">
+                <div class="section-heading">
+                    <h2>为什么越来越多酒店选择升级专业版</h2>
+                    <p>把系统从能用，升级到更能增长。围绕渠道扩展、经营洞察、收益优化和直客经营，建立更完整的酒店增长能力。</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon"><img src="./.figma/image/mojt8dpu-8t4jg7d.svg" alt="接入更多渠道图标"></div>
+                        <h3>接入更多渠道，扩大订单来源</h3>
+                        <p>在基础渠道能力之上，专业版支持更多渠道接入与高价值渠道覆盖，帮助酒店触达更优质的流量和订单机会。</p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">无限渠道接入</span>
+                            <span class="feature-tag">高价值渠道</span>
+                            <span class="feature-tag">GDS 协同</span>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon"><img src="./.figma/image/mojt8dpu-mq3s5np.svg" alt="调价建议图标"></div>
+                        <h3>用调价建议辅助收益管理</h3>
+                        <p>通过更智能的调价建议，减少人工判断成本，帮助酒店优化价格策略并提升日常收益管理效率。</p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">调价建议</span>
+                            <span class="feature-tag">收益优化</span>
+                            <span class="feature-tag">定价效率</span>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon"><img src="./.figma/image/mojt8dpu-76ndp9h.svg" alt="经营分析图标"></div>
+                        <h3>从看订单，到看懂经营</h3>
+                        <p>数据分析视图、客户画像分析与客户预订分布，帮助团队更清楚地理解客户来源、订单结构与经营表现。</p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">数据分析视图</span>
+                            <span class="feature-tag">客户画像</span>
+                            <span class="feature-tag">预订分布</span>
+                        </div>
+                    </article>
+                    <article class="feature-card">
+                        <div class="feature-icon"><img src="./.figma/image/mojt8dpu-g2t8tqd.svg" alt="官网预订图标"></div>
+                        <h3>搭建官网预订能力，发展直客渠道</h3>
+                        <p>专业版支持预订官网与酒店网站建设工具，帮助酒店建立自有预订入口，减少对单一外部平台的依赖。</p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">预订官网</span>
+                            <span class="feature-tag">网站建设工具</span>
+                            <span class="feature-tag">直客经营</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="cta-figure" aria-label="升级引导区">
+            <img src="./.figma/image/cta-banner-new.svg" alt="覆盖更多渠道、更多直客和更多增长能力">
+            <div class="cta-figure-content">
+                <div class="cta-figure-left">
+                    <h2 class="cta-figure-title">覆盖更多渠道、更多直营和更多增长能力</h2>
+                    <p class="cta-figure-desc">现在开始，用更专业的能力做更高效的酒店经营</p>
+                    <p class="cta-figure-desc">可微信、支付宝、对公转账，价值¥1999元/年</p>
+                </div>
+                <div class="cta-figure-right">
+                    <span class="cta-figure-contact">联系咨询</span>
+                    <span class="cta-figure-phone">400 966 9600</span>
+                    <span class="cta-figure-or">或</span>
+                    <a href="https://www.titan-hospitality.cn/applyTrial" class="cta-figure-button">申请试用</a>
+                </div>
+            </div>
+        </section>
+        <section class="support">
+            <div class="support-inner">
+                <h2 class="support-title">企业级支持与灵活开通方式，帮助酒店更安心升级</h2>
+                <div class="support-grid">
+                    <article class="support-card">
+                        <div class="support-icon"><img src="./.figma/image/mojt8dpu-qspze49.svg" alt="灵活支付图标"></div>
+                        <h3>灵活支付开通</h3>
+                        <p>支持支付宝、微信支付与对公转账，在线开通即时生效，也可走企业对公流程，满足不同酒店的财务需求。</p>
+                    </article>
+                    <article class="support-card">
+                        <div class="support-icon"><img src="./.figma/image/mojt8dpu-xsiv6vi.svg" alt="安全保障图标"></div>
+                        <h3>安全与系统保障</h3>
+                        <p>符合PCI DSS支付安全标准、GDPR数据合规要求，7x24小时全天候系统监控与故障响应，保障业务稳定运行。</p>
+                    </article>
+                    <article class="support-card">
+                        <div class="support-icon is-training"><img src="./.figma/image/mojt8dpu-0m5yhdd.svg" alt="持续服务支持图标"></div>
+                        <h3>持续服务支持</h3>
+                        <p>免费版提供基础工单与知识库支持，专业版享受优先客服响应、专属服务对接与产品使用培训，助力快速上手。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        const compareTrigger = document.getElementById('compareTrigger');
+        const compareSection = document.getElementById('compareSection');
+
+        compareTrigger.addEventListener('click', () => {
+            const isOpen = compareTrigger.getAttribute('aria-expanded') === 'true';
+            compareTrigger.setAttribute('aria-expanded', String(!isOpen));
+            compareSection.classList.toggle('is-open', !isOpen);
+
+            if (!isOpen) {
+                setTimeout(() => {
+                    compareSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 120);
+            }
+        });
+    </script>
+</body>
+</html>
