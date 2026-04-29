@@ -143,10 +143,16 @@
         }
 
         .free-card {
+            display: flex;
+            flex-direction: column;
             border: 1px solid var(--border-strong);
             box-shadow: var(--shadow-soft);
-            padding: 32px 32px 99px;
+            padding: 32px 32px 32px;
             min-height: 495px;
+        }
+
+        .free-card > div:first-child {
+            flex: 1;
         }
 
         .pro-card {
